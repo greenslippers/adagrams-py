@@ -1,6 +1,6 @@
 from random import randint
 
-def draw_letters(): # adding comment just to test git push
+def draw_letters(): # adding second comment
     pass 
 
 def uses_available_letters(word, letter_bank):
