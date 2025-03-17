@@ -31,22 +31,26 @@ LETTER_POOL = {
 
 def draw_letters(): 
     # Create expanded list of letters based on frequency
-    letter_list = []
+    letter_bank = []
     for letter, frequency in LETTER_POOL.items():
         for _ in range(frequency):
-            letter_list.append(letter)
+            letter_bank.append(letter)
     
     # Draw 10 random letters
-    drawn_letters = []
+    letters = [] # changed variable from drawn_letters to letters
     for _ in range(10):
-        index = randint(0, len(letter_list) - 1) # get a random index
-        drawn_letters.append(letter_list[index]) # append the letter
+        index = randint(0, len(letter_bank) - 1) # get a random index
+        letters.append(letter_bank.pop(index)) # append the letter
     
-    print(f"Drawn letters: {drawn_letters}") # check output
-    return drawn_letters        
+    print(f"Drawn letters: {letters}") # check output
+    return letters        
 
-def uses_available_letters(word, letter_bank):
-    pass
+def uses_available_letters(word, letters):
+    for letter in word: 
+        if word.count(letter) > letters.count(letter):
+            return False
+    return True 
+        
 
 def score_word(word):
     pass
