@@ -46,6 +46,9 @@ def draw_letters():
     return letters        
 
 def uses_available_letters(word, letters):
+    # Convert letters in word to uppercase:
+    word = word.upper()
+    
     for letter in word: 
         if word.count(letter) > letters.count(letter):
             return False
