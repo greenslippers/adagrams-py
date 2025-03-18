@@ -93,4 +93,28 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    pass
+    # Initialize variables to track the highest score and winning word
+    highest_score = 0
+    winning_word = None 
+
+    # Loop through the list of words to get each word's score
+    for word in word_list:
+        score = score_word(word) # Use existing function to calculate score
+        # If current word score is higher that existing highest_score, update highest score and winning word
+        if score > highest_score:
+            highest_score = score
+            winning_word = word
+        # If score of the current word is the same as the highest score apply rules
+        elif score == highest_score:
+            # the word with the fewest letters wins
+            if len(word) > len(winning_word):
+                winning_word = word
+            # the 10-letter word wins
+            elif len(word) == 10:
+                winning_word = word
+            # if length is the same wins the word that appears first in the loop
+            # elif len(word) == len(winning_word):
+    
+    winning_word_score = (winning_word, highest_score)
+    # Return the winning word and its score
+    return winning_word_score
