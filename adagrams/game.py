@@ -48,7 +48,7 @@ def draw_letters():
 def uses_available_letters(word, letters):
     # Convert letters in word to uppercase:
     word = word.upper()
-    
+
     for letter in word: 
         if word.count(letter) > letters.count(letter):
             return False
@@ -56,7 +56,34 @@ def uses_available_letters(word, letters):
         
 
 def score_word(word):
-    pass
+    word_total_score = 0
+
+    letter_group_1 = ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"]
+    letter_group_2 = ["D", "G"]
+    letter_group_3 = ["B", "C", "M", "P"]
+    letter_group_4 = ["F", "H", "V", "W", "Y"]
+    letter_group_5 = ["K"]
+    letter_group_8 = ["J", "X"]
+    letter_group_10 = ["Q", "Z"]
+
+    for letter in word:
+        if letter in letter_group_1:
+            word_total_score += 1
+        elif letter in letter_group_2:
+            word_total_score += 2
+        elif letter in letter_group_3:
+            word_total_score += 3
+        elif letter in letter_group_4:
+            word_total_score += 4
+        elif letter in letter_group_5:
+            word_total_score += 5
+
+    # Add bonus points for word length of 7-10 letters
+    if len(word) >= 7 and len(word) <= 10:
+        word_total_score += 8
+
+    return word_total_score
+
 
 def get_highest_word_score(word_list):
     pass
