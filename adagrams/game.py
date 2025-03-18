@@ -66,6 +66,9 @@ def score_word(word):
     letter_group_8 = ["J", "X"]
     letter_group_10 = ["Q", "Z"]
 
+    # Convert word to uppercase to handle lowercase
+    word = word.upper()
+
     for letter in word:
         if letter in letter_group_1:
             word_total_score += 1
@@ -77,9 +80,13 @@ def score_word(word):
             word_total_score += 4
         elif letter in letter_group_5:
             word_total_score += 5
+        elif letter in letter_group_8:
+            word_total_score += 8
+        elif letter in letter_group_10:
+            word_total_score += 10
 
     # Add bonus points for word length of 7-10 letters
-    if len(word) >= 7 and len(word) <= 10:
+    if len(word) >= 7 and len(word) <= 10: 
         word_total_score += 8
 
     return word_total_score
