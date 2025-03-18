@@ -107,14 +107,13 @@ def get_highest_word_score(word_list):
         # If score of the current word is the same as the highest score apply rules
         elif score == highest_score:
             # the word with the fewest letters wins
-            if len(word) > len(winning_word):
+            if len(word) < len(winning_word): # Fixed operator from ">" to "<" to correctly reflect the rule 
                 winning_word = word
             # the 10-letter word wins
-            elif len(word) == 10:
+            if len(word) == 10 and len(winning_word) != 10:
                 winning_word = word
-            # if length is the same wins the word that appears first in the loop
-            # elif len(word) == len(winning_word):
     
     winning_word_score = (winning_word, highest_score)
+    
     # Return the winning word and its score
     return winning_word_score
